@@ -3,6 +3,8 @@ var url = require('url');
 var fs = require('fs');
 var path = require('path');
 
+var personnummer = require("personnummer.js");
+
 //here trying to make it into one thing to get what I want depending on url
 //can't get it to read and write the files
 
@@ -25,6 +27,21 @@ const server = http.createServer((req,res) => {
          res.write(html);  
          res.end();  
        });
+  }//end of if2
+
+
+  //writing all of this in the console
+  if(req.url === '/7804224433','/780422-4433'){
+
+    if(personnummer.validate(req.url) == true){
+      console.log("it's valid")
+      res.end
+    }
+    else{
+      console.log("it's invalid")
+      res.end
+    }
+
   }
 
 });
